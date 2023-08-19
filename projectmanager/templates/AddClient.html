@@ -1,0 +1,46 @@
+{% extends "pmbase.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="job-outer" style="margin-top: 15px;">
+                    <div class="signup-box box-shadow">
+                        <h3 class="text-center mb-3 fw700"> New  Client</h3>
+                         <form method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label>{{ form.cname.label }}</label>
+                                {{ form.cname }}
+                                {{ form.cname.errors }}
+                            </div>
+                            <div class="form-group">
+                                <label>{{ form.category.label }}</label>
+                                {{ form.category }}
+                                {{ form.category.errors }}
+                            </div>
+                            <div class="form-group">
+                                <label>{{ form.email.label }}</label>
+                                {{ form.email }}
+                                {{ form.email.errors }}
+                            </div>
+                            <div class="form-group">
+                                <label>{{ form.telephone.label }}</label>
+                                {{ form.telephone }}
+                                {{ form.telephone.errors }}
+                            </div>
+                            <div class="form-group">
+                                <label>{{ form.address.label }}</label>
+                                {{ form.address }}
+                                {{ form.address.errors }}
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="bg-theme-new margin-bottom30 mt-4 txtwhite btn-round txtblack action d-block text-center" style="width: 100%;"> <i class="fa fa-calendar"></i> Create </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

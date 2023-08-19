@@ -1,0 +1,58 @@
+{% load static %}
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <link href={% static "css/Common.css" %} type="text/css" rel="Stylesheet" />
+    <link href={% static "css/MainStyle.css" %} type="text/css" rel="Stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900;1000&display=swap" rel="stylesheet">
+    <link
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel=”stylesheet”
+    href=”https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css”>
+
+    {% block extra_head %}{% endblock %}
+  </head>
+
+  <body>
+    <div class="col-lg-12 noleftpadding norightpadding">
+      <div class="header box-shadow bg-white">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4">
+              <img
+                src={% static "img/logo-png.png" %}
+                width="100px"
+                class="pull-left logooo"
+              />
+            </div>
+
+            <div class="col-lg-8">
+              <div class="pull-right">
+                <ul class="list-unstyled list-inline mb-0">
+                  <li class="list-inline-item">
+                    <a href="{% url 'home' %}" class="txtblack border-radius5">Home</a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="{% url 'user_logout' %}" class="bg-theme-new txtblack border-radius5">Log Out</a>
+                    </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% block content %}{% endblock content %}
+  </body>
+</html>

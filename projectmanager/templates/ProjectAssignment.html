@@ -1,0 +1,61 @@
+{% extends "pmbase.html" %}
+
+{% block extra_head %}
+  <script>
+    function confirmDeleteAssignment(formId, claimsCount) {
+      if (confirm("Are you sure you want to delete this assignment?")) {
+        if (claimsCount > 0) {
+          if (confirm("This assignment is associated with one or more claims. Are you sure you want to proceed?")) {
+            document.getElementById(formId).submit();
+          }
+        } else {
+          document.getElementById(formId).submit();
+        }
+      }
+    }
+  </script>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <div class="job-outer">
+                <h3 class="text-center mb-3 fw700" style="margin-top: 20px;">Projects Assignment</h3>
+                <a href="{% url 'add_assignment' %}" class="btn btn-primary mb-4">New Assignment</a>
+
+                {% for assignment in assignments %}
+                    <div class="signup-box box-shadow mb-4">
+                        <div class="row border-bottom pb-4">
+                            <div class="col-lg-9">
+                                <h3>Project Code -&nbsp;{{ assignment.project.project_code }}</h3>
+                            </div>
+                            <div class="col-lg-3 text-right">
+                                <form method="post" action="{% url 'delete_assignment' assignment.assignment_id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger text-center" onclick="confirmDeleteAssignment('deleteAssignmentForm{{ assignment.assignment_id }}', {{ assignment.claims_set.count }});">
+                                        <i class="fa fa-trash mx-auto"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row pt-4">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label><strong>Client: </strong>&nbsp; {{ assignment.project.client.cname }}</label><br>
+                                    <label><strong>Hours: </strong>&nbsp; {{ assignment.hours }}</label><br>
+                                    <label><strong>Assigned to: </strong>&nbsp; {{ assignment.employee.fname }} {{ assignment.employee.lname }}</label><br>
+                                    <label><strong>Assignment Date: </strong>&nbsp; {{ assignment.task_date }}</label><br>
+                                    <label><strong>Salary Per Hour: </strong>&nbsp; ${{ assignment.salary_hour }}</label><br>
+                                    <label style="border-top: 1px solid rgba(128, 128, 128, 0.2); display: inline-block; width: 100%; padding-top: 10px;"><strong>Project Manager:</strong> {{ assignment.project.project_mang.fname }} {{ assignment.project.project_mang.lname }}</label>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

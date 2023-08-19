@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="clearfix"></div>
+
+    <div class="bgsec bg-white">
+      <div class="maincontent">
+      </div>
+      <div class="maincontent">
+      </div>
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="text-theme-highlight fw700 page-title  ">
+         Unknown CSRF Error! </h2>
+          <p>
+            <a href="{% url 'user_login' %}">Sign in</a> again to access the work reporting system and keep track with your working records.
+          </p>
+          <p>
+            Shall you have any enquiries using this system please contact our I.T. hotline 321-789-1234 or support@ccgc.com.
+          </p>
+        </div>
+
+        <div class="maincontent">
+        </div>
+        <div class="maincontent">
+        </div>
+      </div>
+    </div>
+
+{% endblock content%}

@@ -1,0 +1,47 @@
+{% extends 'ambase.html' %}
+
+{% block content %}
+    <div class="row">
+      <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <div class="job-outer">
+                <h3 class="text-center mb-3 fw700" style="margin-top: 15px;">Review Claims</h3>
+                {% for claim in claims %}
+                <div class="signup-box box-shadow mt-4">
+                    <div class="row border-bottom pb-4">
+                        <div class="col-lg-11">
+                            <h3>Claim {{ claim.claim_id }}</h3>
+                        </div>
+                    </div>
+                    <br>
+                    <label><strong>Submitted by : </strong>{{ claim.assignment.employee.fname }} {{ claim.assignment.employee.lname }}</label><br>
+                    <label><strong>Project Code : </strong>{{ claim.assignment.project.project_code }}</label>
+                    <div class="row pt-4">
+                        <div class="col-lg-2 text-center">
+                            <label class="number">{{ claim.assignment.hours }}</label>
+                            <label><strong>Total hour</strong></label>
+                        </div>
+                        <div class="col-lg-2 text-center">
+                            <label class="text">{{ claim.processed_by.fname }} {{ claim.processed_by.lname }}</label>
+                            <label><strong>Processed by</strong></label>
+                        </div>
+                        <div class="col-lg-2 text-center">
+                            <label class="number">{{ claim.payment_amount }}</label>
+                            <label><strong>Amount</strong></label>
+                        </div>
+                        <div class="col-lg-2 text-center">
+                            <label class="date">{{ claim.claim_date }}</label>
+                            <label><strong>Claim Date</strong></label>
+                        </div>
+                        <div class="col-lg-2 text-center">
+                            <label class="text">{{ claim.approved}}</label>
+                            <label><strong>Status</strong></label>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
