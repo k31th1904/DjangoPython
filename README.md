@@ -15,7 +15,7 @@ we need to create an root/admin user from Signup page first, and then set is_sta
 So that we will have a superuser to access Django built-in admin page to initiate permission group and assignment 
 (those are required from decorators.py), then we will be able to access different pages with group permission control assignment.
 
-Brand-new environment setup consequence:
+Brand-new environment setup:
 1. Execute SQL statement to create table
 2. Execute SQL statement to insert pre-usage data
 3. Django settings.py to link up database
